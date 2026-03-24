@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/table";
 import NewStudentDialog from "@/components/NewStudentDialog";
 
-interface Student {
+interface StudentBalance {
 	id: string;
 	first_name: string;
 	last_name: string;
@@ -22,10 +22,10 @@ interface Student {
 }
 
 interface Props {
-	students: Student[];
+	studentBalances: StudentBalance[];
 }
 
-export default function StudentsPageClient({ students }: Props) {
+export default function StudentsPageClient({ studentBalances }: Props) {
 	const [dialogOpen, setDialogOpen] = useState(false);
 
 	return (
@@ -35,7 +35,7 @@ export default function StudentsPageClient({ students }: Props) {
 		<Button onClick={() => setDialogOpen(true)}>+ Add Student</Button>
 		</div>
 
-		{students.length === 0 ? (
+		{studentBalances.length === 0 ? (
 			<p className="text-dark-foreground-muted">No students yet. Add one to get started.</p>
 		) : (
 		<div className="rounded-lg border border-dark-border overflow-hidden">
@@ -48,20 +48,15 @@ export default function StudentsPageClient({ students }: Props) {
 		</TableRow>
 		</TableHeader>
 		<TableBody>
-		{students.map((student) => (
+		{studentBalances.map((student) => (
 			<TableRow key={student.id}>
 			<TableCell className="font-medium">
-			{student.first_name} {student.last_name}
+			<Link href={`/students/${student.id}`}>{student.first_name} {student.last_name}</Link>
 			</TableCell>
 			<TableCell>
 			<Badge variant="outline" className="text-dark-success border-dark-success">
-			{student.balance} pts
+			<Link href={`/shop/student/${student.id}`}>{student.balance} pts</Link>
 			</Badge>
-			</TableCell>
-			<TableCell className="text-right">
-			<Button variant="ghost" size="sm" asChild>
-			<Link href={`/students/${student.id}`}>View →</Link>
-			</Button>
 			</TableCell>
 			</TableRow>
 		))}

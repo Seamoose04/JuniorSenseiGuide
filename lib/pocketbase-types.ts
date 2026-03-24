@@ -11,7 +11,15 @@ export enum Collections {
 	Mfas = "_mfas",
 	Otps = "_otps",
 	Superusers = "_superusers",
+	CircuitsProgress = "circuits_progress",
+	CircuitsProjects = "circuits_projects",
+	CodesparkProgress = "codespark_progress",
+	CodesparkProjects = "codespark_projects",
+	CodesparkSections = "codespark_sections",
 	PointTransactions = "point_transactions",
+	RoboticsProgress = "robotics_progress",
+	RoboticsProjects = "robotics_projects",
+	ScratchProgress = "scratch_progress",
 	ShopItems = "shop_items",
 	Students = "students",
 	Users = "users",
@@ -95,12 +103,77 @@ export type SuperusersRecord = {
 	verified?: boolean
 }
 
+export type CircuitsProgressRecord = {
+	created: IsoAutoDateString
+	id: string
+	project?: RecordIdString
+	student?: RecordIdString
+	updated: IsoAutoDateString
+}
+
+export type CircuitsProjectsRecord = {
+	created: IsoAutoDateString
+	id: string
+	name?: string
+	order?: number
+	updated: IsoAutoDateString
+}
+
+export type CodesparkProgressRecord = {
+	created: IsoAutoDateString
+	id: string
+	project?: RecordIdString
+	student?: RecordIdString
+	updated: IsoAutoDateString
+}
+
+export type CodesparkProjectsRecord = {
+	created: IsoAutoDateString
+	id: string
+	name?: string
+	order?: number
+	section?: RecordIdString
+	updated: IsoAutoDateString
+}
+
+export type CodesparkSectionsRecord = {
+	created: IsoAutoDateString
+	id: string
+	name?: string
+	updated: IsoAutoDateString
+}
+
 export type PointTransactionsRecord = {
 	amount: number
 	created: IsoAutoDateString
 	id: string
 	reason?: string
 	student: RecordIdString
+}
+
+export type RoboticsProgressRecord = {
+	created: IsoAutoDateString
+	id: string
+	project?: RecordIdString
+	student?: RecordIdString
+	updated: IsoAutoDateString
+}
+
+export type RoboticsProjectsRecord = {
+	created: IsoAutoDateString
+	id: string
+	name: string
+	order: number
+	updated: IsoAutoDateString
+}
+
+export type ScratchProgressRecord = {
+	created: IsoAutoDateString
+	id: string
+	project: number
+	stars?: number
+	student?: RecordIdString
+	updated: IsoAutoDateString
 }
 
 export type ShopItemsRecord = {
@@ -139,7 +212,15 @@ export type ExternalauthsResponse<Texpand = unknown> = Required<ExternalauthsRec
 export type MfasResponse<Texpand = unknown> = Required<MfasRecord> & BaseSystemFields<Texpand>
 export type OtpsResponse<Texpand = unknown> = Required<OtpsRecord> & BaseSystemFields<Texpand>
 export type SuperusersResponse<Texpand = unknown> = Required<SuperusersRecord> & AuthSystemFields<Texpand>
+export type CircuitsProgressResponse<Texpand = unknown> = Required<CircuitsProgressRecord> & BaseSystemFields<Texpand>
+export type CircuitsProjectsResponse<Texpand = unknown> = Required<CircuitsProjectsRecord> & BaseSystemFields<Texpand>
+export type CodesparkProgressResponse<Texpand = unknown> = Required<CodesparkProgressRecord> & BaseSystemFields<Texpand>
+export type CodesparkProjectsResponse<Texpand = unknown> = Required<CodesparkProjectsRecord> & BaseSystemFields<Texpand>
+export type CodesparkSectionsResponse<Texpand = unknown> = Required<CodesparkSectionsRecord> & BaseSystemFields<Texpand>
 export type PointTransactionsResponse<Texpand = unknown> = Required<PointTransactionsRecord> & BaseSystemFields<Texpand>
+export type RoboticsProgressResponse<Texpand = unknown> = Required<RoboticsProgressRecord> & BaseSystemFields<Texpand>
+export type RoboticsProjectsResponse<Texpand = unknown> = Required<RoboticsProjectsRecord> & BaseSystemFields<Texpand>
+export type ScratchProgressResponse<Texpand = unknown> = Required<ScratchProgressRecord> & BaseSystemFields<Texpand>
 export type ShopItemsResponse<Texpand = unknown> = Required<ShopItemsRecord> & BaseSystemFields<Texpand>
 export type StudentsResponse<Texpand = unknown> = Required<StudentsRecord> & BaseSystemFields<Texpand>
 export type UsersResponse<Texpand = unknown> = Required<UsersRecord> & AuthSystemFields<Texpand>
@@ -152,7 +233,15 @@ export type CollectionRecords = {
 	_mfas: MfasRecord
 	_otps: OtpsRecord
 	_superusers: SuperusersRecord
+	circuits_progress: CircuitsProgressRecord
+	circuits_projects: CircuitsProjectsRecord
+	codespark_progress: CodesparkProgressRecord
+	codespark_projects: CodesparkProjectsRecord
+	codespark_sections: CodesparkSectionsRecord
 	point_transactions: PointTransactionsRecord
+	robotics_progress: RoboticsProgressRecord
+	robotics_projects: RoboticsProjectsRecord
+	scratch_progress: ScratchProgressRecord
 	shop_items: ShopItemsRecord
 	students: StudentsRecord
 	users: UsersRecord
@@ -164,7 +253,15 @@ export type CollectionResponses = {
 	_mfas: MfasResponse
 	_otps: OtpsResponse
 	_superusers: SuperusersResponse
+	circuits_progress: CircuitsProgressResponse
+	circuits_projects: CircuitsProjectsResponse
+	codespark_progress: CodesparkProgressResponse
+	codespark_projects: CodesparkProjectsResponse
+	codespark_sections: CodesparkSectionsResponse
 	point_transactions: PointTransactionsResponse
+	robotics_progress: RoboticsProgressResponse
+	robotics_projects: RoboticsProjectsResponse
+	scratch_progress: ScratchProgressResponse
 	shop_items: ShopItemsResponse
 	students: StudentsResponse
 	users: UsersResponse
